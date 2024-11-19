@@ -1,0 +1,572 @@
+/* Загальні стилі */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Хедер */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+header nav ul li {
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: white;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #1abc9c;
+}
+
+.auth-buttons {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    
+}
+
+.auth-buttons button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.auth-buttons button:hover {
+    background-color: #0056b3;
+}
+.textheader{
+    font-size: 23px;
+}
+
+/* Hero секція */
+.hero {
+    background-image: url('https://umoloda.kyiv.ua/img/content/i169/169773w540.webp');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    filter: brightness(100%);
+}
+
+.hero-content {
+    z-index: 10;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.join-btn {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.join-btn:hover {
+    background-color: #27ae60;
+}
+
+/* Анімація */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Модальні вікна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Секція кнопок */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1.2rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Футер */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+.info-section {
+    max-width: 600px;
+    margin: 2em auto;
+    text-align: center;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info-section h1 {
+    color: #333;
+    margin-bottom: 1em;
+}
+
+.info-section p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 2em;
+    line-height: 1.6;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+}
+.regfild{
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    
+    background-color: #0056b3;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    
+}
+.regfild h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+.regfild label {
+    font-size: 2.1em;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+.regfild input[type="text"],
+.regfild input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+.logining{
+    justify-content: center;
+    align-items: center;
+    
+}
+.main-log{
+    padding-top: 100px;
+    height: 800px;
+    align-items: center;
+    justify-items: center;
+    background-image: url('https://umoloda.kyiv.ua/img/content/i169/169773w540.webp');
+    background-size: cover;
+    background-position: center;
+    
+}
+.button-login {
+    background-color: green;
+    font-size: 35px;
+}
+.button-login :hover{
+    background-color: red;
+}
+.regfild2{
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #0056b3;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 500px;
+    text-align: center;
+}
+.main-reg{
+    justify-items: center;
+    padding-top: 100px;
+    height: 800px;
+    
+    align-items: center;
+    justify-items: center;
+    background-image: url('https://umoloda.kyiv.ua/img/content/i169/169773w540.webp');
+    background-size: cover;
+    background-position: center;
+}
+.regfild2 h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+.regfild2 label {
+    font-size: 2.1em;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+.regfild2 input[type="text"],
+.regfild2 input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.selreg{
+    font-size: 30px;
+}
+.if-no-login a {
+    font-size: 20px;
+    color: red;
+}
+.if-no-login a:hover {
+    font-size: 20px;
+    color: yellow;
+}
+.brigades-blok {
+    font-family: Arial, sans-serif;
+    
+    margin: 0;
+    padding: 20px;
+    justify-content: center;
+    justify-items: center;
+    background-image: url('https://umoloda.kyiv.ua/img/content/i169/169773w540.webp');
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.brigades-blok table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white; /* Весь фон таблиці білий */
+    border: 3px solid blue; /* Контур для кожної комірки */
+    margin-bottom: 20px;
+}
+
+.brigades-blok th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid blue; /* Контур для кожної комірки */
+    text-align: center; /* Горизонтальне центрування */
+    vertical-align: middle; /* Вертикальне центрування */
+}
+
+.brigades-blok th {
+    background-color: blue;
+    color: white;
+    border: 1px solid blue; /* Контур для кожної комірки */
+}
+
+.brigades-blok td img {
+    width: 100px;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    align-self:center;
+    
+    
+}
+
+.brigades-blok {
+    background-color: #0056b3;
+}
+
+
+.select-btn {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.select-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Модальне вікно */
+/* Модальне вікно */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-height: 80%;
+    overflow-y: auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.positions-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.positions-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.apply-btn {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.apply-btn:hover {
+    background-color: #218838;
+}
+
+.close-btn {
+    padding: 10px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.close-btn:hover {
+    background-color: #c82333;
+}
+.info-main{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 700px;
+    padding: 40px;
+    justify-content: center;
+    justify-items: center;
+    background-image: url('https://umoloda.kyiv.ua/img/content/i169/169773w540.webp');
+    background-size: cover;
+    background-position: center;
+
+}
+.main-app{
+    background-image: url('https://umoloda.kyiv.ua/img/content/i169/169773w540.webp');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 1200px;
+    padding: 40px;
+    justify-content: center;
+    justify-items: center;
+}
+
+.registration-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: blue;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button.submit-btn {
+    padding: 12px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.status-select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+}

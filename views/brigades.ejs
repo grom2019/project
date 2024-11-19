@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інформація про цей сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/styles.css">
+    
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="textheader" href="/dashboard">Головна</a></li>
+                <li><a class="textheader" href="/info">Контакти</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='/register';" id="registerBtn">Зареєструватися</button>
+                <button onclick="window.location.href='/auth/login';" id="loginBtn">Увійти</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="brigades-blok">
+            <table class="brigades-table">
+                <thead>
+                    <tr>
+                        <th>Фото</th>
+                        <th>Назва бригади</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/72_%D0%9E%D0%9C%D0%91%D1%80.svg/330px-72_%D0%9E%D0%9C%D0%91%D1%80.svg.png" alt="72-га окрема механізована бригада"></td>
+                        <td>72-га окрема механізована бригада</td>
+                        <td><button class="select-btn" onclick="togglePositions(1)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/3%D0%BE%D1%88%D0%B1%D1%80_logo.svg/225px-3%D0%BE%D1%88%D0%B1%D1%80_logo.svg.png" alt="3-тя окрема штурмова бригада"></td>
+                        <td>3-тя окрема штурмова бригада</td>
+                        <td><button class="select-btn" onclick="togglePositions(2)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/128_%D0%9E%D0%93%D0%A8%D0%91%D1%80_%D0%BA.svg/330px-128_%D0%9E%D0%93%D0%A8%D0%91%D1%80_%D0%BA.svg.png" alt="128-ма окрема гірсько-штурмова бригада"></td>
+                        <td>128-ма окрема гірсько-штурмова бригада</td>
+                        <td><button class="select-btn" onclick="togglePositions(3)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/24_%D0%9E%D0%9C%D0%91%D1%80.svg/315px-24_%D0%9E%D0%9C%D0%91%D1%80.svg.png" alt="24-та окрема механізована бригада імені короля Данила"></td>
+                        <td>24-та окрема механізована бригада імені короля Данила</td>
+                        <td><button class="select-btn" onclick="togglePositions(3)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/47_Logo_23_RGB_Black.png/450px-47_Logo_23_RGB_Black.png" alt="47-ма окрема механізована бригада"></td>
+                        <td>47-ма окрема механізована бригада</td>
+                        <td><button class="select-btn" onclick="togglePositions(3)">Вибрати</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Спливаюче вікно -->
+        <div id="positions-overlay" class="overlay" style="display: none;">
+            <div class="overlay-content">
+                <h2>Вільні посади бригади</h2>
+                <table class="positions-table" id="positions-list">
+                    <!-- Посади з'являються тут -->
+                </table>
+                <button class="close-btn" onclick="closePositions()">Закрити</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DEREN OLES</p>
+    </footer>
+    <script src="public/scripts.js"></script>
+
+    <script>
+        const positionsData = {
+            1: [
+                "Командир роти",
+                "Командир батальйону",
+                "Сапер",
+                "Медик",
+                "Водій",
+                "Снайпер",
+                "Оператор безпілотника",
+                "Механік",
+                "Командир відділення",
+                "Розвідник"
+            ],
+            2: [
+                "Командир роти",
+                "Командир батальйону",
+                "Сапер",
+                "Медик",
+                "Водій",
+                "Снайпер",
+                "Оператор безпілотника",
+                "Механік",
+                "Командир відділення",
+                "Розвідник"
+            ],
+            3: [
+                "Командир роти",
+                "Командир батальйону",
+                "Сапер",
+                "Медик",
+                "Водій",
+                "Снайпер",
+                "Оператор безпілотника",
+                "Механік",
+                "Командир відділення",
+                "Розвідник"
+            ]
+        };
+
+        function togglePositions(brigadeId) {
+            const positionsList = positionsData[brigadeId];
+            const listElement = document.getElementById('positions-list');
+
+            // Очищаємо таблицю
+            listElement.innerHTML = '';
+
+            // Додаємо посади до таблиці
+            positionsList.forEach(position => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${position}</td>
+                    <td>
+                        <button class="apply-btn" onclick="redirectToApplicationPage('${position}')">
+                            Подати заявку
+                        </button>
+                    </td>`;
+                listElement.appendChild(row);
+            });
+
+            // Показуємо спливаюче вікно
+            document.getElementById('positions-overlay').style.display = 'flex';
+        }
+
+        function closePositions() {
+            // Ховаємо спливаюче вікно
+            document.getElementById('positions-overlay').style.display = 'none';
+        }
+
+        function redirectToApplicationPage(position) {
+            const applicationUrl = `/application?position=${encodeURIComponent(position)}`;
+            location.assign(applicationUrl);
+        }
+    </script>
+</body>
+</html>

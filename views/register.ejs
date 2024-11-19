@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вибір посади в ЗСУ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="textheader" href="/dashboard">Головна</a></li>
+                <li><a class="textheader" href="/info">Контакти</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='/register';" id="registerBtn">Зареєструватися</button>
+                <button onclick="window.location.href='/auth/login';" id="loginBtn">Увійти</button>
+            </div>
+        </nav>
+    </header>
+    <div class="main-reg">
+
+    
+    <div class="regfild2">
+    <h1>Реєстрація</h1>
+    <form class="formreg2" action="/auth/register" method="post">
+        <label for="username">Логін</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Пароль</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <label for="role">Роль </label>
+        <select class="selreg" id="role" name="role_id">
+            <option value="1">Адміністратор</option>
+            <option value="2">Користувач</option>
+        </select><br><br>
+        <button type="submit">Зареєструватися</button>
+    </form>
+</div>
+</div>
+<footer>
+    <p>&copy; 2024 DEREN OLES</p>
+</footer>
+
+<script src="public/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вибір посади в ЗСУ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="textheader" href="/dashboard">Головна</a></li>
+                <li><a class="textheader" href="/info">Контакти</a></li>
+                
+            </ul>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='/register';" id="registerBtn">Зареєструватися</button>
+                <button onclick="window.location.href='/auth/login';" id="loginBtn">Увійти</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Зроби вибір на користь майбутнього!</h1>
+                <button id="joinBtn" class="join-btn">Приєднатися</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Модальне вікно для вибору командування -->
+    <div id="modalCommand" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCommand">&times;</span>
+            <h2>Оберіть оперативне командування</h2>
+            <ul>
+                <li><button class="command-btn">Оперативне командування «Захід»</button></li>
+                <li><button class="command-btn">Оперативне командування «Північ»</button></li>
+                <li><button class="command-btn">Оперативне командування «Південь»</button></li>
+                <li><button class="command-btn">Оперативне командування «Схід»</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Модальне вікно для вибору роду військ -->
+    <div id="modalBranch" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeBranch">&times;</span>
+            <h2>Оберіть рід військ</h2>
+            <ul>
+                <li><button onclick="window.location.href='/brigades';" class="branch-btn">Сухопутні війська</button></li>
+                <li><button onclick="window.location.href='/air';"class="branch-btn">Повітряні сили</button></li>
+                <li><button onclick="window.location.href='/navy';" class="branch-btn">Військово-морські сили</button></li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 DEREN OLES</p>
+    </footer>
+
+    <script src="public/script.js"></script>
+</body>
+</html>

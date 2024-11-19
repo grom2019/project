@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вибір посади в ЗСУ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="textheader" href="/dashboard">Головна</a></li>
+                <li><a class="textheader" href="/info">Контакти</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='/register';" id="registerBtn">Зареєструватися</button>
+                <button onclick="window.location.href='/auth/login';" id="loginBtn">Увійти</button>
+            </div>
+        </nav>
+    </header>
+    <div class="main-app">
+
+        <div class="registration-container">
+            <h1>Реєстрація</h1>
+            <form class="registration-form" action="/auth/register" method="post">
+                <!-- Поля для особистих даних -->
+                <div class="form-input">
+                    <label for="firstName">Ім'я</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+        
+                <div class="form-input">
+                    <label for="lastName">Прізвище</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+        
+                <div class="form-input">
+                    <label for="middleName">По батькові</label>
+                    <input type="text" id="middleName" name="middleName" required>
+                </div>
+        
+                <div class="form-input">
+                    <label for="residence">Місце проживання</label>
+                    <input type="text" id="residence" name="residence" required>
+                </div>
+        
+                <div class="form-input">
+                    <label for="education">Освіта</label>
+                    <input type="text" id="education" name="education" required>
+                </div>
+        
+                <div class="form-input">
+                    <label for="age">Вік</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+        
+                <!-- Вибір статусу -->
+                <div class="form-input">
+                    <label for="status">Статус</label>
+                    <select class="status-select" id="status" name="status" onchange="showServiceField()">
+                        <option value="study">Я навчаюсь</option>
+                        <option value="serve">Я служу</option>
+                        <option value="plan">Я планую служити</option>
+                    </select>
+                </div>
+        
+                <!-- Поле для місця служби -->
+                <div id="servicePlace" class="form-input" style="display: none;">
+                    <label for="serviceLocation">Місце служби</label>
+                    <input type="text" id="serviceLocation" name="serviceLocation">
+                </div>
+        
+                <!-- Причина для вибору бригади -->
+                <div class="form-input">
+                    <label for="reason">Чому саме в цю бригаду ви хочете?</label>
+                    <textarea id="reason" name="reason" rows="4" required></textarea>
+                </div>
+        
+                <!-- Кнопка відправки форми -->
+                <button type="submit" class="submit-btn">Зареєструватися</button>
+            </form>
+        </div>
+        
+        <script>
+            function showServiceField() {
+                const status = document.getElementById("status").value;
+                const serviceField = document.getElementById("servicePlace");
+        
+                // Показати/сховати поле для місця служби залежно від вибору статусу
+                if (status === "serve") {
+                    serviceField.style.display = "block";
+                } else {
+                    serviceField.style.display = "none";
+                }
+            }
+        </script>
+        
+</div>
+<footer>
+    <p>&copy; 2024 DEREN OLES</p>
+</footer>
+
+<script src="public/script.js"></script>
+</body>
+</html>

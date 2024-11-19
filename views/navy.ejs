@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інформація про цей сайт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a class="textheader" href="/dashboard">Головна</a></li>
+                <li><a class="textheader" href="/info">Контакти</a></li>
+                
+            </ul>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='/register';" id="registerBtn">Зареєструватися</button>
+                <button onclick="window.location.href='/auth/login';" id="loginBtn">Увійти</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="brigades-blok">
+            <table class="brigades-table">
+                <thead>
+                    <tr>
+                        <th>Фото</th>
+                        <th>Назва бригади</th>
+                        <th>Дії</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/%D0%95%D0%BC%D0%B1%D0%BB%D0%B5%D0%BC%D0%B0_1_%D0%B4%D0%B8%D0%B2%D1%96%D0%B7%D1%96%D0%BE%D0%BD%D1%83_%D0%BA%D0%BE%D1%80%D0%B0%D0%B1%D0%BB%D1%96%D0%B2_%D0%BE%D1%85%D0%BE%D1%80%D0%BE%D0%BD%D0%B8_%D1%80%D0%B5%D0%B9%D0%B4%D1%83.png" alt="1-й дивізіон кораблів охорони рейду"></td>
+                        <td>1-й дивізіон кораблів охорони рейду</td>
+                        <td><button class="select-btn" onclick="togglePositions(1)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/24_%D0%9E%D0%94%D0%A0%D0%9A.png" alt="24-й окремий дивізіон річкових катерів"></td>
+                        <td>24-й окремий дивізіон річкових катерів</td>
+                        <td><button class="select-btn" onclick="togglePositions(2)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/4/46/1-%D1%88%D0%B0_%D0%91%D1%80%D0%9D%D0%9A_%D0%92%D0%9C%D0%A1%D0%A3.png" alt="30-й дивізіон надводних кораблів"></td>
+                        <td>30-й дивізіон надводних кораблів</td>
+                        <td><button class="select-btn" onclick="togglePositions(3)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/29th_Surface_Ship_Division_SSI.jpeg/390px-29th_Surface_Ship_Division_SSI.jpeg" alt="29-й дивізіон надводних кораблів "></td>
+                        <td>29-й дивізіон надводних кораблів </td>
+                        <td><button class="select-btn" onclick="togglePositions(3)">Вибрати</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/9_%D0%B4%D0%B8%D0%B2%D1%96%D0%B7%D1%96%D0%BE%D0%BD_%D0%BD%D0%B0%D0%B4%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D1%85_%D0%BA%D0%BE%D1%80%D0%B0%D0%B1%D0%BB%D1%96%D0%B2.png/390px-9_%D0%B4%D0%B8%D0%B2%D1%96%D0%B7%D1%96%D0%BE%D0%BD_%D0%BD%D0%B0%D0%B4%D0%B2%D0%BE%D0%B4%D0%BD%D0%B8%D1%85_%D0%BA%D0%BE%D1%80%D0%B0%D0%B1%D0%BB%D1%96%D0%B2.png" alt="9-й дивізіон надводних кораблів"></td>
+                        <td>9-й дивізіон надводних кораблів</td>
+                        <td><button class="select-btn" onclick="togglePositions(3)">Вибрати</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <!-- Модальне вікно з посадами -->
+            <!-- Модальне вікно з посадами -->
+<div id="positions-overlay" class="overlay" style="display: none;">
+    <div class="overlay-content">
+        <h2>Посади бригади</h2>
+        <table class="positions-table" id="positions-list">
+            <!-- Посади з'являються тут -->
+        </table>
+        <button class="close-btn" onclick="closePositions()">Закрити</button>
+    </div>
+</div>
+
+        
+            <script>
+                const positionsData = {
+                    1: [
+                        "Командир роти",
+                        "Командир батальйону",
+                        "Інженер",
+                        "Медик",
+                        "Технік",
+                        "Снайпер",
+                        "Оператор безпілотника",
+                        "Машиніст",
+                        "Підрозділ спеціальних операцій",
+                        "Розвідник"
+                    ],
+                    2: [
+                        "Командир роти",
+                        "Командир батальйону",
+                        "Інженер",
+                        "Медик",
+                        "Технік",
+                        "Снайпер",
+                        "Оператор безпілотника",
+                        "Машиніст",
+                        "Підрозділ спеціальних операцій",
+                        "Розвідник"
+                    ],
+                    3: [
+                        "Командир роти",
+                        "Командир батальйону",
+                        "Інженер",
+                        "Медик",
+                        "Технік",
+                        "Снайпер",
+                        "Оператор безпілотника",
+                        "Машиніст",
+                        "Підрозділ спеціальних операцій",
+                        "Розвідник"
+                    ]
+                };
+        
+                function togglePositions(brigadeId) {
+                    const positionsList = positionsData[brigadeId];
+                    const listElement = document.getElementById('positions-list');
+        
+                    // Очищаємо таблицю
+                    listElement.innerHTML = '';
+        
+                    // Додаємо посади до таблиці
+                    positionsList.forEach(position => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `<td>${position}</td><td><button class="apply-btn">Подати заявку</button></td>`;
+                        listElement.appendChild(row);
+                    });
+        
+                    // Показуємо модальне вікно
+                    document.getElementById('positions-overlay').style.display = 'block';
+                }
+        
+                function closePositions() {
+                    // Закриваємо модальне вікно
+                    document.getElementById('positions-overlay').style.display = 'none';
+                }
+            </script>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DEREN OLES</p>
+    </footer>
+    <script src="public/script.js"></script>
+</body>
+</html>

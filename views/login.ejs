@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="..\public\css\styles.css">
+</head>
+<body class="logining">
+    <header>
+        <nav>
+            <ul>
+                <li><a class="textheader" href="/dashboard">Головна</a></li>
+                <li><a class="textheader" href="/info">Контакти</a></li>
+                
+            </ul>
+            <div class="auth-buttons">
+                <button onclick="window.location.href='/register';" id="registerBtn">Зареєструватися</button>
+                <button onclick="window.location.href='/auth/login';" id="loginBtn">Увійти</button>
+            </div>
+        </nav>
+    </header>
+    <div class="main-log">
+    <div class="regfild">
+    <h1>Вхід</h1>
+    <% if (typeof error !== 'undefined') { %>
+        <div class="error-message" id="error-message" style="display: block;">
+            <p><%= error %></p>
+            <button onclick="closeError()">Close</button>
+        </div>
+    <% } %>
+    <form class="formreg" action="/auth/login" method="post">
+        <label for="username">Логін </label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Пароль</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button class="button-login" type="submit">Увійти</button>
+    </form>
+    <div class="if-no-login">
+        <p>Немає облікового запису? <a  href="/register">Зареєструватися тут</a></p>
+    </div>
+</div>
+
+    <script>
+        function closeError() {
+            document.getElementById('error-message').style.display = 'none';
+        }
+    </script>
+    
+    
+    </div>
+    <footer>
+        <p>&copy; 2024 DEREN OLES</p>
+    </footer>
+
+    <script src="public/script.js"></script>
+    
+</body>
+</html>
