@@ -61,88 +61,96 @@
                 </tbody>
             </table>
         
-            <!-- Модальне вікно з посадами -->
-            <!-- Модальне вікно з посадами -->
-<div id="positions-overlay" class="overlay" style="display: none;">
-    <div class="overlay-content">
-        <h2>Посади бригади</h2>
-        <table class="positions-table" id="positions-list">
-            <!-- Посади з'являються тут -->
-        </table>
-        <button class="close-btn" onclick="closePositions()">Закрити</button>
-    </div>
-</div>
-
-        
-            <script>
-                const positionsData = {
-                    1: [
-                        "Командир роти",
-                        "Командир батальйону",
-                        "Інженер",
-                        "Медик",
-                        "Технік",
-                        "Снайпер",
-                        "Оператор безпілотника",
-                        "Машиніст",
-                        "Підрозділ спеціальних операцій",
-                        "Розвідник"
-                    ],
-                    2: [
-                        "Командир роти",
-                        "Командир батальйону",
-                        "Інженер",
-                        "Медик",
-                        "Технік",
-                        "Снайпер",
-                        "Оператор безпілотника",
-                        "Машиніст",
-                        "Підрозділ спеціальних операцій",
-                        "Розвідник"
-                    ],
-                    3: [
-                        "Командир роти",
-                        "Командир батальйону",
-                        "Інженер",
-                        "Медик",
-                        "Технік",
-                        "Снайпер",
-                        "Оператор безпілотника",
-                        "Машиніст",
-                        "Підрозділ спеціальних операцій",
-                        "Розвідник"
-                    ]
-                };
-        
-                function togglePositions(brigadeId) {
-                    const positionsList = positionsData[brigadeId];
-                    const listElement = document.getElementById('positions-list');
-        
-                    // Очищаємо таблицю
-                    listElement.innerHTML = '';
-        
-                    // Додаємо посади до таблиці
-                    positionsList.forEach(position => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `<td>${position}</td><td><button class="apply-btn">Подати заявку</button></td>`;
-                        listElement.appendChild(row);
-                    });
-        
-                    // Показуємо модальне вікно
-                    document.getElementById('positions-overlay').style.display = 'block';
-                }
-        
-                function closePositions() {
-                    // Закриваємо модальне вікно
-                    document.getElementById('positions-overlay').style.display = 'none';
-                }
-            </script>
+            <!-- Спливаюче вікно -->
+        <div id="positions-overlay" class="overlay" style="display: none;">
+            <div class="overlay-content">
+                <h2>Вільні посади бригади</h2>
+                <table class="positions-table" id="positions-list">
+                    <!-- Посади з'являються тут -->
+                </table>
+                <button class="close-btn" onclick="closePositions()">Закрити</button>
+            </div>
         </div>
     </main>
 
     <footer>
         <p>&copy; 2024 DEREN OLES</p>
     </footer>
-    <script src="public/script.js"></script>
+    <script src="public/scripts.js"></script>
+
+    <script>
+        const positionsData = {
+            1: [
+                "Командир роти",
+                "Командир батальйону",
+                "Сапер",
+                "Медик",
+                "Водій",
+                "Снайпер",
+                "Оператор безпілотника",
+                "Механік",
+                "Командир відділення",
+                "Розвідник"
+            ],
+            2: [
+                "Командир роти",
+                "Командир батальйону",
+                "Сапер",
+                "Медик",
+                "Водій",
+                "Снайпер",
+                "Оператор безпілотника",
+                "Механік",
+                "Командир відділення",
+                "Розвідник"
+            ],
+            3: [
+                "Командир роти",
+                "Командир батальйону",
+                "Сапер",
+                "Медик",
+                "Водій",
+                "Снайпер",
+                "Оператор безпілотника",
+                "Механік",
+                "Командир відділення",
+                "Розвідник"
+            ]
+        };
+
+        function togglePositions(brigadeId) {
+            const positionsList = positionsData[brigadeId];
+            const listElement = document.getElementById('positions-list');
+
+            // Очищаємо таблицю
+            listElement.innerHTML = '';
+
+            // Додаємо посади до таблиці
+            positionsList.forEach(position => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${position}</td>
+                    <td>
+                        <button class="apply-btn" onclick="redirectToApplicationPage('${position}')">
+                            Подати заявку
+                        </button>
+                    </td>`;
+                listElement.appendChild(row);
+            });
+
+            // Показуємо спливаюче вікно
+            document.getElementById('positions-overlay').style.display = 'flex';
+        }
+
+        function closePositions() {
+            // Ховаємо спливаюче вікно
+            document.getElementById('positions-overlay').style.display = 'none';
+        }
+
+        function redirectToApplicationPage(position) {
+            const applicationUrl = `/application?position=${encodeURIComponent(position)}`;
+            location.assign(applicationUrl);
+        }
+    </script>
 </body>
 </html>
