@@ -4,6 +4,7 @@
     <title>Вибір посади в ЗСУ</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
@@ -23,18 +24,29 @@
     
     <div class="regfild2">
     <h1>Реєстрація</h1>
-    <form class="formreg2" action="/auth/register" method="post">
-        <label for="username">Логін</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Пароль</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <label for="role">Роль </label>
-        <select class="selreg" id="role" name="role_id">
-            <option value="1">Адміністратор</option>
-            <option value="2">Користувач</option>
-        </select><br><br>
-        <button type="submit">Зареєструватися</button>
-    </form>
+    <form class="formreg2">
+    <label for="username">Логін</label>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <label for="password">Пароль</label>
+    <input type="password" id="password" name="password" required><br><br>
+    
+    <label for="role">Роль</label>
+    <select class="selreg" id="role" name="role_id">
+        <option value="1">Адміністратор</option>
+        <option value="2">Користувач</option>
+    </select><br><br>
+    
+    <button type="button" id="registerBtn">Зареєструватися</button>
+</form>
+
+<script>
+    document.getElementById('registerBtn').addEventListener('click', () => {
+        // Перенаправляємо користувача на сторінку /dashboard
+        window.location.href = '/dashboard';
+    });
+</script>
+
 </div>
 </div>
 <footer>

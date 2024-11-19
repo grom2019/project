@@ -1,18 +1,19 @@
 const jwt = require('jsonwebtoken');
 
-const checkAuth = (req, res, next) => {
+const optionalAuth = (req, res, next) => {
     const token = req.session.token;
-    if (!token) {
-        return res.redirect('/auth/login');
+
+    if (token) {
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret');
+            req.user = decoded; // Зберігаємо дані про користувача, якщо токен дійсний
+        } catch (err) {
+            console.error('Invalid token:', err.message);
+            // Якщо токен недійсний, просто продовжуємо без req.user
+        }
     }
-    
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret');
-        req.user = decoded;
-        next();
-    } catch (err) {
-        res.redirect('/auth/login');
-    }
+
+    next(); // Продовжуємо обробку запиту незалежно від токена
 };
 
-module.exports = checkAuth;
+module.exports = optionalAuth;

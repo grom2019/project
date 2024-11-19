@@ -3,6 +3,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="..\public\css\styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class="logining">
     <header>
@@ -21,12 +22,7 @@
     <div class="main-log">
     <div class="regfild">
     <h1>Вхід</h1>
-    <% if (typeof error !== 'undefined') { %>
-        <div class="error-message" id="error-message" style="display: block;">
-            <p><%= error %></p>
-            <button onclick="closeError()">Close</button>
-        </div>
-    <% } %>
+    
     <form class="formreg" action="/auth/login" method="post">
         <label for="username">Логін </label>
         <input type="text" id="username" name="username" required>
@@ -34,18 +30,14 @@
         <label for="password">Пароль</label>
         <input type="password" id="password" name="password" required>
         <br>
-        <button class="button-login" href="/dashboard" type="submit">Увійти</button>
+        <button class="button-login" href="/dashboard" >Увійти</button>
     </form>
     <div class="if-no-login">
-        <p>Немає облікового запису? <a  href="/register">Зареєструватися тут</a></p>
+        <p>Немає облікового запису? <a onclick="window.location.href='/dashboard';" >Зареєструватися тут</a></p>
     </div>
 </div>
 
-    <script>
-        function closeError() {
-            document.getElementById('error-message').style.display = 'none';
-        }
-    </script>
+    
     
     
     </div>

@@ -51,7 +51,9 @@ header nav ul li a:hover {
     position: absolute;
     right: 20px;
     top: 10px;
-    
+    display: flex;
+    flex-wrap: wrap; /* Дозволяє кнопкам переноситися на новий рядок */
+    gap: 10px; /* Відстань між кнопками */
 }
 
 .auth-buttons button {
@@ -59,17 +61,33 @@ header nav ul li a:hover {
     color: white;
     border: none;
     padding: 10px 15px;
-    margin-left: 10px;
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    
+    flex: 1 1 auto; /* Кнопки займатимуть доступний простір */
+    min-width: 120px; /* Мінімальна ширина кнопок */
 }
 
 .auth-buttons button:hover {
     background-color: #0056b3;
 }
+
+/* Адаптивні стилі для телефонів */
+@media (max-width: 768px) {
+    .auth-buttons {
+        position: static; /* Відключає абсолютне позиціонування */
+        margin: 20px auto; /* Центрує кнопки */
+        flex-direction: column; /* Розташовує кнопки вертикально */
+        align-items: center; /* Центрує кнопки по горизонталі */
+    }
+
+    .auth-buttons button {
+        width: 80%; /* Кнопки займають 80% ширини контейнера */
+        max-width: 300px; /* Максимальна ширина кнопок */
+    }
+}
+
 .textheader{
     font-size: 23px;
 }
@@ -570,3 +588,4 @@ button.submit-btn:hover {
     margin-top: 20px;
     width: 100%;
 }
+
